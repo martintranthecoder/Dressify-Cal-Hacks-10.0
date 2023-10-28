@@ -1,12 +1,58 @@
-"""Welcome to Reflex!."""
-
-from dressify import styles
-
-# Import all the pages.
-from dressify.pages import *
+"""Welcome to Reflex! This file outlines the steps to create a basic app."""
+from rxconfig import config
 
 import reflex as rx
 
-# Create the app and compile it.
-app = rx.App(style=styles.base_style)
+docs_url = "https://reflex.dev/docs/getting-started/introduction"
+filename = f"{config.app_name}/{config.app_name}.py"
+
+
+class State(rx.State):
+    """The app state."""
+
+    pass
+
+def index() -> rx.Component:
+    return rx.fragment(
+        rx.color_mode_button(rx.color_mode_icon(), float="right"),
+    
+         rx.image(
+            src="box 1.png",
+            width="100%",
+            height="100%"
+        ),
+        rx.vstack(
+            rx.text(
+                "Dressify",
+                color="#FBFBFB",
+                font_size="2em",
+                font_family="static/Raleway-Light.ttf",
+                font_weight=400,
+                word_wrap="break-word"
+            ),
+            rx.heading("Welcome to REFLEX!", font_size="2em"),
+            
+            rx.box("Begin by editing ", rx.code(filename, font_size="1em")),
+            rx.link(
+                "gremlin!",
+                href=docs_url,
+                border="0.1em solid",
+                padding="0.5em",
+                border_radius="0.5em",
+                _hover={
+                    "color": rx.color_mode_cond(
+                        light="rgb(107,99,246)",
+                        dark="rgb(179, 175, 255)",
+                    )
+                },
+            ),
+            spacing="1.5em",
+            font_size="2em",
+            padding_top="10%",
+        ),
+    )
+
+# Add state and page to the app.
+app = rx.App()
+app.add_page(index)
 app.compile()
