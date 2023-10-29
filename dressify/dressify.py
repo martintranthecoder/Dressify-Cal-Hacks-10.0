@@ -148,7 +148,7 @@ def index() -> rx.Component:
             height= "100vh",
             padding_bottom= "30%",
         ),
-        background= "linear-gradient(180deg, #050303 0%, #2D2E2E 100%)",
+        background_color= "linear-gradient(180deg, #050303 0%, #2D2E2E 100%)",
         height= "100%"
     )
 

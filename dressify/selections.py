@@ -68,23 +68,22 @@ def selections() -> rx.Component:
                 rx.select(
                     season, id = "season", placeholder="Select a season.", size="lg"
                 ),
-                rx.button("Submit", type_="submit"),
-                on_submit= WardrobeState.handle_form
-            ),
-
-            rx.link(
-                "+ add item",
+                
+                rx.button("GENERATE", type_="submit",
                 border="0.1em solid",
                 padding="0.5em",
                 border_radius="0.5em",
-                on_click=rx.redirect("/wardrobe"),
+                on_click=rx.redirect("/results"),
                 _hover={
                     "color": rx.color_mode_cond(
                         light="rgb(107,99,246)",
                         dark="rgb(179, 175, 255)",
                     )
                 },
+                ),
+                on_submit= WardrobeState.handle_form,
             ),
+            text_align= "center",
             spacing="1.5em",
             font_size="2em",
             padding_top="10%",
