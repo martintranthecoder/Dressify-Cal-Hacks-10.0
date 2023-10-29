@@ -38,6 +38,8 @@ def selections() -> rx.Component:
 
             rx.text(
             "Let's Start by Filtering Your Selection!",
+            width= "100%",
+            height= "100%",
             color= "#FBFBFB", 
             font_size="1em", 
             font_family="static/Raleway-Light.ttf",
@@ -88,7 +90,6 @@ def selections() -> rx.Component:
             height= "100vh",
             padding_bottom= "10%",
         ),
-    background ="linear-gradient(180deg, #050303 0%, #2D2E2E 100%) fixed",
-    height= "100vh",
-    display= "flex",
+    background ="linear-gradient(180deg, #050303 0%, #2D2E2E 100%)",
+    height= "100%"
     )
