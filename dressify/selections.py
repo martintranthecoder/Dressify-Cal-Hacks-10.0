@@ -4,7 +4,7 @@ from rxconfig import config
 import reflex as rx
 from typing import List
 
-from .state import State
+from .wardrobe import WardrobeState
 
 
 gender: List[str] = ["women", "men", "unisex"]
@@ -16,10 +16,17 @@ season: List[str] = ["fall", "summer", "winter", "spring"]
 
 def selections() -> rx.Component:
     
-    return rx.fragment(
-        rx.color_mode_button(rx.color_mode_icon(), float="right"),
+    return rx.center(
 
         rx.vstack(
+
+            rx.button(
+                "HOME",
+                on_click=rx.redirect("/"),
+               size = "md",
+               color= "#BCABAE",   
+            ),
+
             rx.text(
                 "Selections",
                 color="#FBFBFB",
@@ -30,7 +37,7 @@ def selections() -> rx.Component:
             ),
 
             rx.text(
-            "Make Your Selections",
+            "Let's Start by Filtering Your Selection!",
             width= "100%",
             height= "100%",
             color= "#FBFBFB", 
@@ -42,27 +49,31 @@ def selections() -> rx.Component:
             justify_content="center",
             align_items="center",
             ),
-            rx.select(
-                gender, placeholder="Select an example.", size="lg"
+            rx.form(
+                rx.select(
+                    gender, id="gender", placeholder="Select a gender.", size="lg"
+                ),
+                rx.select(
+                    primaryattribute, id="primaryattribute", placeholder="Select a primary attribute.", size="lg"
+                ),
+                rx.select(
+                    secondaryattribute, id="secondaryattribute", placeholder="Select a secondary attribute.", size="lg"
+                ),
+                rx.select(
+                    itemtype, id = "itemtype", placeholder="Select an item type.", size="lg"
+                ),
+                rx.select(
+                    color, id = "color", placeholder="Select a color.", size="lg"
+                ),
+                rx.select(
+                    season, id = "season", placeholder="Select a season.", size="lg"
+                ),
+                rx.button("Submit", type_="submit"),
+                on_submit= WardrobeState.handle_form
             ),
-            rx.select(
-                primaryattribute, placeholder="Select an example.", size="lg"
-            ),
-            rx.select(
-                secondaryattribute, placeholder="Select an example.", size="lg"
-            ),
-            rx.select(
-                itemtype, placeholder="Select an example.", size="lg"
-            ),
-            rx.select(
-                color, placeholder="Select an example.", size="lg"
-            ),
-            rx.select(
-                season, placeholder="Select an example.", size="lg"
-            ),
-            
+
             rx.link(
-                "+ add items",
+                "+ add item",
                 border="0.1em solid",
                 padding="0.5em",
                 border_radius="0.5em",
@@ -77,7 +88,9 @@ def selections() -> rx.Component:
             spacing="1.5em",
             font_size="2em",
             padding_top="10%",
-            background= "linear-gradient(180deg, #050303 0%, #2D2E2E 100%)",
-            background_size= "100%",
+            height= "100vh",
+            padding_bottom= "10%",
         ),
+    background ="linear-gradient(180deg, #050303 0%, #2D2E2E 100%)",
+    height= "100%"
     )

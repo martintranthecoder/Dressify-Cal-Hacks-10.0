@@ -5,15 +5,10 @@ import reflex as rx
 from .state import State
 from .selections import selections
 from .wardrobe import wardrobe
-
-filename = f"{config.app_name}/{config.app_name}.py"
-
+from .results import results
 
 def index() -> rx.Component:
-    return rx.fragment(
-        rx.color_mode_button(rx.color_mode_icon(), float="right"),
-    
-        
+    return rx.center(
         rx.vstack(
 
             rx.link(
@@ -27,23 +22,26 @@ def index() -> rx.Component:
                 justify_content="center",
                 align_items="center",
                 margin_top="1em",
+                on_click=rx.redirect("/wardrobe"),
             ),
-            
-            rx.hstack(
+            rx.responsive_grid(
+                rx.hstack(
+                    rx.image(
+                    src="box 1.png",
+                    width= "30%",
+                    margin_top= "3em",
+                    ),
                 rx.image(
-            src="box 1.png",
-            width= "30%",
-            margin_top= "3em",
+                    src="box2.png",
+                    width= "30%",
+                    ),
+                rx.image(
+                    src="box3.png",
+                    width= "30%",
+                    margin_top= "3em",
+                    ),
                 ),
-            rx.image(
-                src="box2.png",
-                width= "30%",
-                ),
-            rx.image(
-                src="box3.png",
-                width= "30%",
-                margin_top= "3em",
-                ),
+                padding_left= "8%" 
             ),
             rx.text(
                 "Dressify",
@@ -85,15 +83,16 @@ def index() -> rx.Component:
                         "browse wardrobe",  
                         color="#FBFBFB",  
                         font_size="0.5em",
-                        display="flex",
-                        justify_content="center",
-                        align_items="center",
+                        font_family="static/Raleway-Light.ttf", 
+                        font_weight=400,  
+                        word_wrap="break-word",
+                        text_align="center",
                     ),
+                    
                     width="100%",
                     height="100px",
                     background= "#BCABAE",
                     border_radius="218.50px",
-                    margin_right= "2rem",
                 ),
 
                 rx.box(
@@ -107,16 +106,16 @@ def index() -> rx.Component:
                         "filter your selection",  
                         color="#FBFBFB",  
                         font_size="0.5em",
-                        display="flex",
-                        justify_content="center",
-                        align_items="center",
+                        font_family="static/Raleway-Light.ttf", 
+                        font_weight=400,  
+                        word_wrap="break-word",
+                        text_align="center",
                     ),
                     width="100%",
                     height="100px",
                     background= "#FBFBFB",
                     border_radius="218.50px",
                     margin_right= "2rem",
-                    margin_left= "2rem",
                 ),
 
                 rx.box(
@@ -130,36 +129,27 @@ def index() -> rx.Component:
                         "generate your outfit",  
                         color="#FBFBFB",  
                         font_size="0.5em",
-                        display="flex",
-                        justify_content="center",
-                        align_items="center",
+                        font_family="static/Raleway-Light.ttf", 
+                        font_weight=400,  
+                        word_wrap="break-word",
+                        text_align="center",
                     ),
                     width="100%",
                     height="100px",
                     background= "#716969",
                     border_radius="218.50px",
-                    margin_left= "2rem"
                 ),
-                ),
-
-            rx.link(
-                "+ add items",
-                border="0.1em solid",
-                padding="0.5em",
-                border_radius="0.5em",
-                _hover={
-                    "color": rx.color_mode_cond(
-                        light="rgb(107,99,246)",
-                        dark="rgb(179, 175, 255)",
-                    )
-                },
+                spacing="2em",
+                padding_bottom= "30%",
             ),
-            spacing="1.5em",
+            spacing="4em",
             font_size="2em",
             padding_top="10%",
-            background= "linear-gradient(180deg, #050303 0%, #2D2E2E 100%)",
-            background_size= "100%",
+            height= "100vh",
+            padding_bottom= "30%",
         ),
+        background= "linear-gradient(180deg, #050303 0%, #2D2E2E 100%)",
+        height= "100%"
     )
 
 # Add state and page to the app.
@@ -167,4 +157,5 @@ app = rx.App()
 app.add_page(index)
 app.add_page(selections)
 app.add_page(wardrobe)
+app.add_page(results)
 app.compile()
