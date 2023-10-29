@@ -1,73 +1,34 @@
-# Welcome to Reflex!
+# Dressify- CalHacks 10.0 2023 Submission:scarf:
 
-This is the base Reflex template - installed when you run `reflex init`.
+Sophia Zheng, Aiden Sallows, Martin Tran, Carol Li
 
-If you want to use a different template, pass the `--template` flag to `reflex init`.
-For example, if you want a more basic starting point, you can run:
+## Inspiration:thought_balloon:
+We've all been there: rushing around and running late, with piles of clothes scattered around the room, only to reach the realization that you have absolutely nothing suitable to wear. Dressify's mission is to provide a personalized experience by harnessing AI to curate outfits that truly resonate with your style.
 
-```bash
-reflex init --template blank
-```
+## What it does:dizzy:
+Using this app, Dressify creates an AI generated outfit perfect for any user. By analyzing a series of user entries, this program will compare their desired clothing item to a database of 44,000 different clothing. Finding the best match for the given item, this program will create a thoroughly detailed prompt that then connects with together.ai’s API to create an AI image that represents a perfect outfit.  
+**Target audience**: Anyone looking for unconventional style inspiration!  
 
-## About this Template
+## Tools:hammer_and_pick:
+Reflex, together.ai, Python, Figma, Kaggle, Github, VSCode, Jupyter Notebook
 
-This template has the following directory structure:
+## How we built it::computer:
+1) Brainstorm(coming up with project scope, audience), and researching into the data to use  
 
-```bash
-├── README.md
-├── assets
-├── rxconfig.py
-└── {your_app}
-    ├── __init__.py
-    ├── components
-    │   ├── __init__.py
-    │   └── sidebar.py
-    ├── pages
-    │   ├── __init__.py
-    │   ├── dashboard.py
-    │   ├── index.py
-    │   └── settings.py
-    ├── state.py
-    ├── styles.py
-    ├── templates
-    │   ├── __init__.py
-    │   └── template.py
-    └── {your_app}.py
-```
+2) Frontend: prototyping through Figma, connecting mockups with Reflex
+3) Backend (Data): Cleaning data (drop NaN values, converting data types, etc), accessing user input and using that information to filter CSV file, and creating a detailed script to generate outfit text
+4) Backend (together.ai): input the detailed text to the together.ai model to generate image, implement photos on web app
+5) Deployment: connecting frontend and backend with Reflex
 
-See the [Project Structure docs](https://reflex.dev/docs/getting-started/project-structure/) for more information on general Reflex project structure.
+## Challenges we ran into:monocle_face:
+- Originally, we wanted to use an LLM/Clustering model, but did not due to time constraints and lack of numerical data
+- Generating the photos on the web app was time consuming
 
-### Adding Pages
+## What we learned:bulb:
+- Good teamwork and communication go a long way
+-  Web development in all forms-frontend, backend, etc
+-  Industry knowledge, sponsors provided great insight about their programs
 
-In this template, the pages in your app are defined in `{your_app}/pages/`.
-Each page is a function that returns a Reflex component.
-For example, to edit this page you can modify `{your_app}/pages/index.py`.
-See the [pages docs](https://reflex.dev/docs/components/pages/) for more information on pages.
-
-In this template, instead of using `rx.add_page` or the `@rx.page` decorator,
-we use the `@template` decorator from `{your_app}/templates/template.py`.
-
-To add a new page:
-
-1. Add a new file in `{your_app}/pages/`. We recommend using one file per page, but you can also group pages in a single file.
-2. Add a new function with the `@template` decorator, which takes the same arguments as `@rx.page`.
-3. Import the page in your `{your_app}/pages/__init__.py` file and it will automatically be added to the app.
-
-
-### Adding Components
-
-In order to keep your code organized, we recommend putting components that are
-used across multiple pages in the `{your_app}/components/` directory.
-
-In this template, we have a sidebar component in `{your_app}/components/sidebar.py`.
-
-### Adding State
-
-In this template, we define the base state of the app in `{your_app}/state.py`.
-The base state is useful for general app state that is used across multiple pages.
-
-In this template, the base state handles the toggle for the sidebar.
-
-As your app grows, we recommend using [substates](https://reflex.dev/docs/state/substates/)
-to organize your state. You can either define substates in their own files, or if the state is
-specific to a page, you can define it in the page file itself.
+## What's next:arrow_right:
+- Implementing more features (creating a wardrobe, individual user accounts, etc)
+- Spreading the word, and getting users experience our project!
