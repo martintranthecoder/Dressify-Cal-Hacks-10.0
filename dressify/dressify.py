@@ -4,8 +4,8 @@ from rxconfig import config
 import reflex as rx
 from .state import State
 from .selections import selections
+from .wardrobe import wardrobe
 
-docs_url = "https://reflex.dev/docs/getting-started/introduction"
 filename = f"{config.app_name}/{config.app_name}.py"
 
 
@@ -18,7 +18,6 @@ def index() -> rx.Component:
 
             rx.link(
                 "Wardrobe",
-                href=docs_url,
                 color="#FBFBFB",
                 font_size="1em",
                 font_family="static/Raleway-Light.ttf",
@@ -145,7 +144,6 @@ def index() -> rx.Component:
 
             rx.link(
                 "+ add items",
-                href=docs_url,
                 border="0.1em solid",
                 padding="0.5em",
                 border_radius="0.5em",
@@ -168,4 +166,5 @@ def index() -> rx.Component:
 app = rx.App()
 app.add_page(index)
 app.add_page(selections)
+app.add_page(wardrobe)
 app.compile()

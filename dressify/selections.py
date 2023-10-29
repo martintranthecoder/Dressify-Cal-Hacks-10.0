@@ -66,6 +66,7 @@ def selections() -> rx.Component:
                 border="0.1em solid",
                 padding="0.5em",
                 border_radius="0.5em",
+                on_click=rx.redirect("/wardrobe"),
                 _hover={
                     "color": rx.color_mode_cond(
                         light="rgb(107,99,246)",
