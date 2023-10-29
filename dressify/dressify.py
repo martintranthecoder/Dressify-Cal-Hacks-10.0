@@ -2,15 +2,12 @@
 from rxconfig import config
 
 import reflex as rx
+from .state import State
+from .selections import selections
 
 docs_url = "https://reflex.dev/docs/getting-started/introduction"
 filename = f"{config.app_name}/{config.app_name}.py"
 
-
-class State(rx.State):
-    """The app state."""
-    def onclick(self):
-        return rx.redirect("http://google.com")
 
 def index() -> rx.Component:
     return rx.fragment(
@@ -170,4 +167,5 @@ def index() -> rx.Component:
 # Add state and page to the app.
 app = rx.App()
 app.add_page(index)
+app.add_page(selections)
 app.compile()
