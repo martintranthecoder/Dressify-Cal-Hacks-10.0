@@ -21,19 +21,17 @@ def results() -> rx.Component:
                     font_style= "normal",
                     font_weight= "400",
                     line_height= "normal",
-                    bottom= "120px",
                     position = "relative",
                     
             ),
             rx.text(
-                    "Please wait patiently! The A.I. is hard at work making your cyuuuute outfit!",
+                    "Please wait patiently! The A.I. is hard at work making your cyuuuute outfit!\n Please refresh in 10 seconds",
                     color= "#FBFBFB",
                     font_family="static/Raleway-Light.ttf",
                     font_size= "1.0em",
                     font_style= "normal",
                     font_weight= "400",
                     line_height= "normal",
-                    bottom= "120px",
                     position = "relative",
                     
                 ),

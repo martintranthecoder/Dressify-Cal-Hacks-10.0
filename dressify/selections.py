@@ -15,9 +15,7 @@ color: List[str] = ["navy blue", "blue", "black", "grey", "green", "purple", "wh
 season: List[str] = ["fall", "summer", "winter", "spring"]
 
 def selections() -> rx.Component:
-    
     return rx.center(
-
         rx.vstack(
 
             rx.button(
@@ -90,6 +88,4 @@ def selections() -> rx.Component:
             height= "100vh",
             padding_bottom= "10%",
         ),
-    background ="linear-gradient(180deg, #050303 0%, #2D2E2E 100%)",
-    height= "100%"
     )

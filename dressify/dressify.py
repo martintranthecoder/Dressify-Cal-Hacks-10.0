@@ -9,22 +9,23 @@ from .results import results
 
 def index() -> rx.Component:
     return rx.center(
-        rx.vstack(
 
-            rx.link(
-                "Wardrobe",
+        rx.button(
+        rx.icon(tag="moon"),
+        on_click=rx.toggle_color_mode,
+    ),
+        rx.vstack(
+            
+            rx.responsive_grid(
+                rx.text(
+                "Dressify",
                 color="#FBFBFB",
-                font_size="1em",
+                font_size="2em",
                 font_family="static/Raleway-Light.ttf",
                 font_weight=400,
                 word_wrap="break-word",
-                display="flex",
-                justify_content="center",
-                align_items="center",
-                margin_top="1em",
-                on_click=rx.redirect("/wardrobe"),
+                text_align = "center",
             ),
-            rx.responsive_grid(
                 rx.hstack(
                     rx.image(
                     src="box 1.png",
@@ -41,20 +42,11 @@ def index() -> rx.Component:
                     margin_top= "3em",
                     ),
                 ),
-                padding_left= "8%" 
-            ),
-            rx.text(
-                "Dressify",
-                color="#FBFBFB",
-                font_size="2em",
-                font_family="static/Raleway-Light.ttf",
-                font_weight=400,
-                word_wrap="break-word"
-            ),
-
-            rx.button(
+                rx.button(
                 "START",
                 on_click= State.onclick
+                ),
+                padding_left= "4%",
             ),
 
             rx.text(
@@ -146,10 +138,7 @@ def index() -> rx.Component:
             font_size="2em",
             padding_top="10%",
             height= "100vh",
-            padding_bottom= "30%",
         ),
-        background_color= "linear-gradient(180deg, #050303 0%, #2D2E2E 100%)",
-        height= "100%"
     )
 
 # Add state and page to the app.
