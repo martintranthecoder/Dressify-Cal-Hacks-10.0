@@ -2,6 +2,7 @@ import { Fragment, useContext, useEffect, useRef, useState } from "react"
 import { useRouter } from "next/router"
 import { Event, getAllLocalStorageItems, getRefValue, getRefValues, isTrue, preventDefault, refs, spreadArraysOrObjects, uploadFiles, useEventLoop } from "/utils/state"
 import { ColorModeContext, EventLoopContext, initialEvents, StateContext } from "/utils/context.js"
+import range from "/utils/helpers/range.js"
 import "focus-visible/dist/focus-visible"
 import { Button, Center, Image, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, SimpleGrid, Stack, Text, VStack } from "@chakra-ui/react"
 import { getEventURL } from "/utils/state.js"
@@ -64,24 +65,24 @@ export default function Component() {
 </Fragment>
   <Center sx={{"background": "linear-gradient(180deg, #050303 0%, #2D2E2E 100%)"}}>
   <VStack alignItems={`center`} justifyContent={`center`} sx={{"display": "flex", "height": "100vh"}}>
-  <Button onClick={(_e) => addEvents([Event("_redirect", {path:`/`,external:false})], (_e))} size={`md`} sx={{"color": "#BCABAE"}}>
+  <Button onClick={(_e) => addEvents([Event("_redirect", {path:`/`,external:false})], (_e), {})} size={`md`} sx={{"color": "#BCABAE"}}>
   {`HOME`}
 </Button>
   <Text sx={{"color": "#FBFBFB", "fontFamily": "static/Raleway-Light.ttf", "fontSize": "2em", "fontStyle": "normal", "fontWeight": "400", "lineHeight": "normal", "bottom": "120px", "position": "relative", "paddingTop": "0%"}}>
   {`Wardrobe`}
 </Text>
   <SimpleGrid columns={[3]} spacing={`10`} sx={{"margin": "auto"}}>
-  {state.wardrobe_state.image_urls.map((psohevka, i) => (
-  <Text key={i}>
-  <Image src={psohevka}/>
+  {state.wardrobe_state.image_urls.map((iktadvlk, zxyleqvp) => (
+  <Text key={zxyleqvp}>
+  <Image src={iktadvlk}/>
 </Text>
 ))}
 </SimpleGrid>
   <Stack direction={`column`}>
-  <Button onClick={(_e) => addEvents([Event("_redirect", {path:`/selections`,external:false})], (_e))} size={`md`} sx={{"color": "#BCABAE", "border": "10%"}}>
+  <Button onClick={(_e) => addEvents([Event("_redirect", {path:`/selections`,external:false})], (_e), {})} size={`md`} sx={{"color": "#BCABAE", "border": "10%"}}>
   {`ADD MORE`}
 </Button>
-  <Button onClick={(_e) => addEvents([Event("_redirect", {path:`/results`,external:false})], (_e))} size={`md`} sx={{"color": "#BCABAE"}}>
+  <Button onClick={(_e) => addEvents([Event("_redirect", {path:`/results`,external:false})], (_e), {})} size={`md`} sx={{"color": "#BCABAE"}}>
   {`GENERATE`}
 </Button>
 </Stack>

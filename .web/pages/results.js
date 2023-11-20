@@ -2,8 +2,9 @@ import { Fragment, useContext, useEffect, useRef, useState } from "react"
 import { useRouter } from "next/router"
 import { Event, getAllLocalStorageItems, getRefValue, getRefValues, isTrue, preventDefault, refs, spreadArraysOrObjects, uploadFiles, useEventLoop } from "/utils/state"
 import { ColorModeContext, EventLoopContext, initialEvents, StateContext } from "/utils/context.js"
+import range from "/utils/helpers/range.js"
 import "focus-visible/dist/focus-visible"
-import { Box, Button, Center, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, SimpleGrid, Text, VStack } from "@chakra-ui/react"
+import { Button, Center, Image, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, SimpleGrid, Text, VStack } from "@chakra-ui/react"
 import { getEventURL } from "/utils/state.js"
 import NextHead from "next/head"
 
@@ -64,24 +65,22 @@ export default function Component() {
 </Fragment>
   <Center sx={{"background": "linear-gradient(180deg, #050303 0%, #2D2E2E 100%)"}}>
   <VStack alignItems={`center`} justifyContent={`center`} sx={{"display": "flex", "height": "100vh"}}>
-  <Button onClick={(_e) => addEvents([Event("_redirect", {path:`/`,external:false})], (_e))} size={`md`} sx={{"color": "#BCABAE"}}>
+  <Button onClick={(_e) => addEvents([Event("_redirect", {path:`/`,external:false})], (_e), {})} size={`md`} sx={{"color": "#BCABAE"}}>
   {`HOME`}
 </Button>
-  <Text sx={{"color": "#FBFBFB", "fontFamily": "static/Raleway-Light.ttf", "fontSize": "2em", "fontStyle": "normal", "fontWeight": "400", "lineHeight": "normal", "bottom": "120px", "position": "relative"}}>
+  <Text sx={{"color": "#FBFBFB", "fontFamily": "static/Raleway-Light.ttf", "fontSize": "2em", "fontStyle": "normal", "fontWeight": "400", "lineHeight": "normal", "position": "relative"}}>
   {`Results`}
 </Text>
+  <Text sx={{"color": "#FBFBFB", "fontFamily": "static/Raleway-Light.ttf", "fontSize": "1.0em", "fontStyle": "normal", "fontWeight": "400", "lineHeight": "normal", "position": "relative"}}>
+  {`Please wait patiently! The A.I. is hard at work making your cyuuuute outfit!
+ Please refresh in 10 seconds`}
+</Text>
   <SimpleGrid columns={[3]} spacing={`10`} sx={{"margin": "auto"}}>
-  <Box sx={{"height": "10em", "width": "10em", "bg": "#BCABAE"}}/>
-  <Box sx={{"height": "10em", "width": "10em", "bg": "#BCABAE"}}/>
-  <Box sx={{"height": "10em", "width": "10em", "bg": "#BCABAE"}}/>
-  <Box sx={{"height": "10em", "width": "10em", "bg": "#BCABAE"}}/>
-  <Box sx={{"height": "10em", "width": "10em", "bg": "#BCABAE"}}/>
-  <Box sx={{"height": "10em", "width": "10em", "bg": "#BCABAE"}}/>
-  <Box sx={{"height": "10em", "width": "10em", "bg": "#BCABAE"}}/>
-  <Box sx={{"height": "10em", "width": "10em", "bg": "#BCABAE"}}/>
-  <Box sx={{"height": "10em", "width": "10em", "bg": "#BCABAE"}}/>
+  <Image src={`http://localhost:3000/result0.png`} sx={{"width": "auto", "height": "auto"}}/>
+  <Image src={`http://localhost:3000/result1.png`} sx={{"width": "auto", "height": "auto"}}/>
+  <Image src={`http://localhost:3000/result2.png`} sx={{"width": "auto", "height": "auto"}}/>
 </SimpleGrid>
-  <Button onClick={(_e) => addEvents([Event("_redirect", {path:`/selections`,external:false})], (_e))} size={`md`} sx={{"color": "#BCABAE"}}>
+  <Button onClick={(_e) => addEvents([Event("_redirect", {path:`/selections`,external:false})], (_e), {})} size={`md`} sx={{"color": "#BCABAE"}}>
   {`BACK TO SELECTIONS`}
 </Button>
 </VStack>

@@ -1,7 +1,6 @@
 from rxconfig import config
 from dressify.state import State
 from typing import List
-import PIL
 
 import reflex as rx
 ## when you submit the form, take the submission and send to api, then get url and pass the url into here

@@ -1,7 +1,8 @@
-import { Fragment, useContext, useEffect, useRef, useState } from "react"
+import { Fragment, useCallback, useContext, useEffect, useRef, useState } from "react"
 import { useRouter } from "next/router"
 import { Event, getAllLocalStorageItems, getRefValue, getRefValues, isTrue, preventDefault, refs, spreadArraysOrObjects, uploadFiles, useEventLoop } from "/utils/state"
 import { ColorModeContext, EventLoopContext, initialEvents, StateContext } from "/utils/context.js"
+import range from "/utils/helpers/range.js"
 import "focus-visible/dist/focus-visible"
 import { Box, Button, Center, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, option, Select, Text, VStack } from "@chakra-ui/react"
 import { getEventURL } from "/utils/state.js"
@@ -34,12 +35,25 @@ export default function Component() {
     }
   }, [router])
 
-  const ref_gender = useRef(null); refs['ref_gender'] = ref_gender;
-  const ref_secondaryattribute = useRef(null); refs['ref_secondaryattribute'] = ref_secondaryattribute;
   const ref_itemtype = useRef(null); refs['ref_itemtype'] = ref_itemtype;
   const ref_color = useRef(null); refs['ref_color'] = ref_color;
-  const ref_season = useRef(null); refs['ref_season'] = ref_season;
+  const ref_secondaryattribute = useRef(null); refs['ref_secondaryattribute'] = ref_secondaryattribute;
   const ref_primaryattribute = useRef(null); refs['ref_primaryattribute'] = ref_primaryattribute;
+  const ref_gender = useRef(null); refs['ref_gender'] = ref_gender;
+  const ref_season = useRef(null); refs['ref_season'] = ref_season;
+  
+    const handleSubmitmwqnixqq = useCallback((ev) => {
+        const $form = ev.target
+        ev.preventDefault()
+        const form_data = {...Object.fromEntries(new FormData($form).entries()), ...{"season": getRefValue(ref_season), "gender": getRefValue(ref_gender), "secondaryattribute": getRefValue(ref_secondaryattribute), "primaryattribute": getRefValue(ref_primaryattribute), "color": getRefValue(ref_color), "itemtype": getRefValue(ref_itemtype)}}
+
+        addEvents([Event("state.wardrobe_state.handle_form", {form_data:form_data})])
+
+        if (false) {
+            $form.reset()
+        }
+    })
+    
 
   return (
     <Fragment>
@@ -68,18 +82,18 @@ export default function Component() {
   <Fragment/>
 )}
 </Fragment>
-  <Center sx={{"background": "linear-gradient(180deg, #050303 0%, #2D2E2E 100%) fixed", "height": "100vh", "display": "flex"}}>
+  <Center>
   <VStack spacing={`1.5em`} sx={{"textAlign": "center", "fontSize": "2em", "paddingTop": "10%", "height": "100vh", "paddingBottom": "10%"}}>
-  <Button onClick={(_e) => addEvents([Event("_redirect", {path:`/`,external:false})], (_e))} size={`md`} sx={{"color": "#BCABAE"}}>
+  <Button onClick={(_e) => addEvents([Event("_redirect", {path:`/`,external:false})], (_e), {})} size={`md`} sx={{"color": "#BCABAE"}}>
   {`HOME`}
 </Button>
   <Text sx={{"color": "#FBFBFB", "fontSize": "2em", "fontFamily": "static/Raleway-Light.ttf", "fontWeight": 400, "wordWrap": "break-word"}}>
   {`Selections`}
 </Text>
-  <Text sx={{"color": "#FBFBFB", "fontSize": "1em", "fontFamily": "static/Raleway-Light.ttf", "fontWeight": 400, "wordWrap": "break-word", "display": "flex", "justifyContent": "center", "alignItems": "center"}}>
+  <Text sx={{"width": "100%", "height": "100%", "color": "#FBFBFB", "fontSize": "1em", "fontFamily": "static/Raleway-Light.ttf", "fontWeight": 400, "wordWrap": "break-word", "display": "flex", "justifyContent": "center", "alignItems": "center"}}>
   {`Let's Start by Filtering Your Selection!`}
 </Text>
-  <Box as={`form`} onSubmit={(_e0) => addEvents([Event("state.wardrobe_state.handle_form", {form_data:{"primaryattribute": getRefValue(ref_primaryattribute), "secondaryattribute": getRefValue(ref_secondaryattribute), "gender": getRefValue(ref_gender), "color": getRefValue(ref_color), "season": getRefValue(ref_season), "itemtype": getRefValue(ref_itemtype)}})], (_e0))}>
+  <Box as={`form`} onSubmit={handleSubmitmwqnixqq}>
   <Select id={`gender`} placeholder={`Select a gender.`} ref={ref_gender} size={`lg`}>
   <option value={`women`}>
   {`women`}
@@ -362,7 +376,7 @@ export default function Component() {
   {`spring`}
 </option>
 </Select>
-  <Button onClick={(_e) => addEvents([Event("_redirect", {path:`/results`,external:false})], (_e))} sx={{"border": "0.1em solid", "padding": "0.5em", "borderRadius": "0.5em", "_hover": {"color": isTrue((colorMode === "light")) ? `rgb(107,99,246)` : `rgb(179, 175, 255)`}}} type={`submit`}>
+  <Button onClick={(_e) => addEvents([Event("_redirect", {path:`/results`,external:false})], (_e), {})} sx={{"border": "0.1em solid", "padding": "0.5em", "borderRadius": "0.5em", "Hover": {"color": isTrue((colorMode === "light")) ? `rgb(107,99,246)` : `rgb(179, 175, 255)`}}} type={`submit`}>
   {`GENERATE`}
 </Button>
 </Box>
